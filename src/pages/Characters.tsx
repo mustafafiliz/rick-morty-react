@@ -45,7 +45,7 @@ const Characters = () => {
         setParams={setParams}
         handleSubmit={getData}
       />
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {loading ? (
           Array.from({ length: 4 }).map((_, index) => {
             return <CharacterCardSkeleton key={index} />;

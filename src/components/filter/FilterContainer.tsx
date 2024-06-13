@@ -29,10 +29,10 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
           e.preventDefault();
           handleSubmit();
         }}
-        className="py-3 px-4 bg-gray-100 flex gap-2 items-center border border-gray-300 rounded-lg"
+        className="py-3 px-4 bg-gray-100 md:flex gap-2 items-center border border-gray-300 rounded-lg"
       >
-        <h3 className="mr-2 font-medium">Filter Characters</h3>
-        <div className="grid grid-cols-6 flex-1 gap-2">
+        <h3 className="mr-2 font-medium lg:flex hidden">Filter Characters</h3>
+        <div className="grid grid-cols-4 md:grid-cols-6 flex-1 gap-2">
           <div className="col-span-2">
             <Input
               value={params.name}
@@ -51,7 +51,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
               placeholder="Type"
             />
           </div>
-          <div className="col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <SelectBox
               onChange={(value: string) =>
                 setParams({ ...params, status: value })
@@ -60,7 +60,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
               value={params.status}
             />
           </div>
-          <div className="col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <SelectBox
               onChange={(value: string) =>
                 setParams({ ...params, gender: value })
@@ -73,14 +73,14 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
         <Button
           onClick={() => handleSubmit()}
           type="submit"
-          className="justify-center w-[110px]"
+          className="justify-center w-full md:w-[110px] md:mt-0 mt-4"
           name="Search"
           icon={<SearchIcon />}
         />
         <Button
           onClick={handleReset}
           variant="danger"
-          className="px-4 h-[38px]"
+          className="px-4 h-[38px] md:w-auto w-full md:mt-0 mt-4 lg:justify-normal justify-center"
           icon={<TrashIcon />}
         />
       </form>
