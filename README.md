@@ -14,12 +14,4 @@ yarn dev
 yarn build
 ```
 
-```sh
-yarn lint
-```
-
-```sh
-yarn test
-```
-
 ## Description
