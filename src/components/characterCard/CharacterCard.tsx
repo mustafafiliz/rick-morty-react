@@ -5,13 +5,13 @@ type Props = {
   item: ICharacter;
 };
 
-const CartoonCard = ({ item }: Props) => {
+const CharacterCard = ({ item }: Props) => {
   return (
     <div className="border border-gray-200 h-full">
       <img src={item.image} alt={item.name} className="w-full aspect-square" />
       <div className="p-4">
-        <h3 className="font-medium text-base">{item.name}</h3>
-        <ul className="flex flex-col gap-2 mt-4">
+        <h3 className="font-semibold text-lg text-gray-800">{item.name}</h3>
+        <ul className="flex flex-col gap-2 mt-4 text-gray-800">
           <li>
             <strong>Status:</strong> <span>{item.status}</span>
           </li>
@@ -33,4 +33,4 @@ const CartoonCard = ({ item }: Props) => {
   );
 };
 
-export default CartoonCard;
+export default CharacterCard;

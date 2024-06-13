@@ -9,3 +9,6 @@ body {
   font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
+button {
+  cursor: pointer;
+}

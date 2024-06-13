@@ -1,2 +1,3 @@
 export { default as Aside } from "./aside/Aside";
-export { default as CartoonCard } from "./cartoonCard/CartoonCard";
+export { default as CharacterCard } from "./characterCard/CharacterCard";
+export { default as FilterContainer } from "./filter/FilterContainer";

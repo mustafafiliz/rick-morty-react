@@ -16,7 +16,7 @@ const Aside = () => {
   ];
 
   return (
-    <div className="w-[300px] h-screen text-gray-800 pl-2 p-4 flex flex-col justify-between border-r-2 border-gray-200">
+    <div className="w-[250px] h-screen text-gray-800 pl-2 p-4 flex flex-col justify-between border-r-2 border-gray-200">
       <div>
         <h2 className="text-lg font-medium pl-1">Rick and Morty API</h2>
         <nav className="mt-4">
@@ -40,7 +40,7 @@ const Aside = () => {
           </ul>
         </nav>
       </div>
-      <p className="font-medium">Rick and Morty © Jengal Software</p>
+      <p className="font-medium text-sm">Rick and Morty © Jengal Software</p>
     </div>
   );
 };
