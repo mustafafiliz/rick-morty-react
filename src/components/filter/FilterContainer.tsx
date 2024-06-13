@@ -29,7 +29,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
           e.preventDefault();
           handleSubmit();
         }}
-        className="py-3 px-4 bg-gray-100 flex gap-2 items-center"
+        className="py-3 px-4 bg-gray-100 flex gap-2 items-center border border-gray-300 rounded-lg"
       >
         <h3 className="mr-2 font-medium">Filter Characters</h3>
         <div className="grid grid-cols-6 flex-1 gap-2">

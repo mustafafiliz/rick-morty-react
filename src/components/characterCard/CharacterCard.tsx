@@ -23,7 +23,7 @@ const CharacterCard = ({ item }: Props) => {
           </li>
         </ul>
         <Link
-          to="/character/1"
+          to={`/character/${item.id}`}
           className="bg-primary-500 text-white font-bold px-4 py-3 text-center rounded-lg w-full block mt-4"
         >
           Details

@@ -4,7 +4,11 @@ import {
   getCharacters,
 } from "../services/characters/characters.service";
 import { ICharacterResponse } from "../interfaces/characters/characters.interface";
-import { CharacterCard, FilterContainer } from "../components";
+import {
+  CharacterCard,
+  CharacterCardSkeleton,
+  FilterContainer,
+} from "../components";
 
 const Characters = () => {
   const [params, setParams] = useState<ICharParams>({
@@ -43,7 +47,9 @@ const Characters = () => {
       />
       <div className="grid grid-cols-4 gap-4">
         {loading ? (
-          <>Loading...</>
+          Array.from({ length: 4 }).map((_, index) => {
+            return <CharacterCardSkeleton key={index} />;
+          })
         ) : (
           <>
             {data?.results.map((item) => {
