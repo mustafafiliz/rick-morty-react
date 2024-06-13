@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + Redux Toolkit + Tailwind CSS
+# React + TypeScript + Vite + Tailwind CSS
 
 ## Project Setup
 
