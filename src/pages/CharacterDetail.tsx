@@ -84,14 +84,14 @@ const CharacterDetail = () => {
       </Helmet>
       <div className="pt-4">
         <Button name="Back" onClick={() => history.back()} />
-        <div className="pt-4 grid grid-cols-2 gap-4">
+        <div className="pt-4 lg:grid grid-cols-2 gap-4">
           <img
             src={character?.image}
             alt={character?.name}
             width="100%"
             height="100%"
           />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 lg:mt-0 mt-5">
             <h1 className="text-2xl font-semibold">{character?.name}</h1>
             <ul className="flex flex-col gap-2 mt-4 text-gray-800">
               <li>

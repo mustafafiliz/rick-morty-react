@@ -1,5 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
+import { ICharacterResponse } from "../../interfaces/characters/characters.interface";
 import { genderOptions, statusOptions } from "../../mocks/static";
-import { ICharParams } from "../../services/characters/characters.service";
+import { initialParams } from "../../pages/Characters";
+import {
+  ICharParams,
+  getCharacters,
+} from "../../services/characters/characters.service";
 import { SearchIcon, TrashIcon } from "../icons";
 import { Input } from "../ui";
 import Button from "../ui/Button";
@@ -9,18 +15,27 @@ type Props = {
   params: ICharParams;
   setParams: (params: ICharParams) => void;
   handleSubmit: (_params?: ICharParams) => Promise<unknown>;
+  setData: Dispatch<SetStateAction<ICharacterResponse | null>>;
 };
 
-const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
-  const handleReset = () => {
-    const initialParams = {
-      name: "",
-      type: "",
-      status: "",
-      gender: "",
-    };
+const FilterContainer = ({
+  params,
+  setParams,
+  handleSubmit,
+  setData,
+}: Props) => {
+  const handleReset = async () => {
     setParams(initialParams);
-    handleSubmit(initialParams);
+    await handleSubmit(initialParams);
+    try {
+      const { data: responseData } = await getCharacters(initialParams);
+      setData(responseData);
+    } catch (error: any) {
+      if (error?.response?.status === 404) {
+        setData(null);
+      }
+      return error;
+    }
   };
   return (
     <div className="sticky top-0 bg-white py-4 z-10">
@@ -53,6 +68,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
           </div>
           <div className="col-span-2 md:col-span-1">
             <SelectBox
+              key={params.status}
               onChange={(value: string) =>
                 setParams({ ...params, status: value })
               }
@@ -62,6 +78,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
           </div>
           <div className="col-span-2 md:col-span-1">
             <SelectBox
+              key={params.gender}
               onChange={(value: string) =>
                 setParams({ ...params, gender: value })
               }
@@ -73,14 +90,15 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
         <Button
           onClick={() => handleSubmit()}
           type="submit"
-          className="justify-center w-full md:w-[110px] md:mt-0 mt-4"
+          className="justify-center w-full md:w-[110px] md:mt-0 mt-2"
           name="Search"
           icon={<SearchIcon />}
         />
         <Button
-          onClick={handleReset}
+          type="button"
+          onClick={() => handleReset()}
           variant="danger"
-          className="px-4 h-[38px] md:w-auto w-full md:mt-0 mt-4 lg:justify-normal justify-center"
+          className="px-4 h-[38px] md:w-auto w-full md:mt-0 mt-2 lg:justify-normal justify-center"
           icon={<TrashIcon />}
         />
       </form>

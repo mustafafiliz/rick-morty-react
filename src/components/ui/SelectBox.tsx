@@ -18,7 +18,6 @@ const SelectBox = ({ value, options, onChange }: Props) => {
       className="w-full p-2 rounded-lg bg-gray-50 border border-gray-300 outline-none text-sm"
       value={value}
       onChange={(e) => {
-        e.preventDefault();
         onChange(e.target.value === "DEFAULT" ? "" : e.target.value);
       }}
     >

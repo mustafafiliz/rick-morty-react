@@ -11,14 +11,16 @@ import {
   Pagination,
 } from "../components";
 
+export const initialParams = {
+  name: "",
+  type: "",
+  status: "",
+  gender: "",
+  page: 1,
+};
+
 const Characters = () => {
-  const [params, setParams] = useState<ICharParams>({
-    name: "",
-    type: "",
-    status: "",
-    gender: "",
-    page: 1,
-  });
+  const [params, setParams] = useState<ICharParams>(initialParams);
   const [data, setData] = useState<ICharacterResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -26,11 +28,11 @@ const Characters = () => {
     try {
       const { data: responseData } = await getCharacters(_params || params);
       setData(responseData);
-      setLoading(false);
+      if (loading) setLoading(false);
     } catch (error: any) {
       if (error?.response?.status === 404) {
         setData(null);
-        setLoading(false);
+        if (loading) setLoading(false);
       }
       return error;
     }
@@ -52,6 +54,7 @@ const Characters = () => {
         params={params}
         setParams={setParams}
         handleSubmit={getData}
+        setData={setData}
       />
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {loading ? (

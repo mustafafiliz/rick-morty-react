@@ -8,6 +8,7 @@ const Home = () => {
         <li>Typescript</li>
         <li>Tailwind CSS</li>
         <li>React Helmet (to create dynamic title)</li>
+        <li className="mt-10">404 (not found page) included</li>
       </ul>
     </>
   );
