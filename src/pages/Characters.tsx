@@ -17,12 +17,15 @@ const Characters = () => {
   const [loading, setLoading] = useState(true);
 
   const getData = async (_params?: ICharParams) => {
-    setLoading(true);
     try {
       const { data: responseData } = await getCharacters(_params || params);
       setData(responseData);
       setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
+      if (error?.response?.status === 404) {
+        setData(null);
+        setLoading(false);
+      }
       return error;
     }
   };

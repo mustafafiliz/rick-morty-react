@@ -6,6 +6,7 @@ type Props = {
   className?: string;
   icon?: React.ReactNode;
   onClick: () => void;
+  type?: "button" | "submit" | "reset";
 };
 
 const Button = ({
@@ -14,9 +15,11 @@ const Button = ({
   className = "",
   icon,
   onClick,
+  type = "button",
 }: Props) => {
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`p-2 flex items-center gap-3 rounded-lg text-white font-medium text-sm border ${
         variant === "primary"

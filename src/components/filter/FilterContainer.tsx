@@ -1,7 +1,9 @@
+import { genderOptions, statusOptions } from "../../mocks/static";
 import { ICharParams } from "../../services/characters/characters.service";
 import { SearchIcon, TrashIcon } from "../icons";
 import { Input } from "../ui";
 import Button from "../ui/Button";
+import SelectBox from "../ui/SelectBox";
 
 type Props = {
   params: ICharParams;
@@ -22,7 +24,13 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
   };
   return (
     <div className="sticky top-0 bg-white py-4 z-10">
-      <div className="py-3 px-4 bg-gray-100 flex gap-2 items-center">
+      <form
+        onClick={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="py-3 px-4 bg-gray-100 flex gap-2 items-center"
+      >
         <h3 className="mr-2 font-medium">Filter Characters</h3>
         <div className="grid grid-cols-6 flex-1 gap-2">
           <div className="col-span-2">
@@ -44,14 +52,27 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
             />
           </div>
           <div className="col-span-1">
-            <Input value="" onChange={() => {}} placeholder="Status" />
+            <SelectBox
+              onChange={(value: string) =>
+                setParams({ ...params, status: value })
+              }
+              options={statusOptions}
+              value={params.status}
+            />
           </div>
           <div className="col-span-1">
-            <Input value="" onChange={() => {}} placeholder="Gender" />
+            <SelectBox
+              onChange={(value: string) =>
+                setParams({ ...params, gender: value })
+              }
+              options={genderOptions}
+              value={params.gender}
+            />
           </div>
         </div>
         <Button
           onClick={() => handleSubmit()}
+          type="submit"
           className="justify-center w-[110px]"
           name="Search"
           icon={<SearchIcon />}
@@ -62,7 +83,7 @@ const FilterContainer = ({ params, setParams, handleSubmit }: Props) => {
           className="px-4 h-[38px]"
           icon={<TrashIcon />}
         />
-      </div>
+      </form>
     </div>
   );
 };
