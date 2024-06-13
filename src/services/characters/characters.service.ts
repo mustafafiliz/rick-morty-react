@@ -5,6 +5,7 @@ export interface ICharParams {
   type?: string;
   status?: string;
   gender?: string;
+  page?: number;
 }
 
 export const getCharacters = (params: ICharParams) => {

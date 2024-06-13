@@ -8,6 +8,7 @@ import {
   CharacterCard,
   CharacterCardSkeleton,
   FilterContainer,
+  Pagination,
 } from "../components";
 
 const Characters = () => {
@@ -16,6 +17,7 @@ const Characters = () => {
     type: "",
     status: "",
     gender: "",
+    page: 1,
   });
   const [data, setData] = useState<ICharacterResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,6 +34,12 @@ const Characters = () => {
       }
       return error;
     }
+  };
+
+  const handlePagination = async (page: number) => {
+    const _params = { ...params, page };
+    setParams(_params);
+    await getData(_params);
   };
 
   useEffect(() => {
@@ -57,6 +65,13 @@ const Characters = () => {
             })}
           </>
         )}
+      </div>
+      <div className="mt-6 mb-2 flex justify-center scale-125">
+        <Pagination
+          page={params.page}
+          onPagination={handlePagination}
+          totalPages={data?.info.pages || 1}
+        />
       </div>
     </>
   );
