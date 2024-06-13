@@ -66,7 +66,7 @@ const Characters = () => {
           </>
         )}
       </div>
-      <div className="mt-6 mb-2 flex justify-center scale-125">
+      <div className="mt-6 mb-2 flex justify-center lg:scale-125">
         <Pagination
           page={params.page}
           onPagination={handlePagination}
