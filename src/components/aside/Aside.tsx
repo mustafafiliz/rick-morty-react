@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { CharacterIcon, HomeIcon } from "../icons";
+import { useState } from "react";
 
 const Aside = () => {
+  const [active, setActive] = useState(location?.pathname);
+
   const navs = [
     {
       name: "Anasayfa",
@@ -21,16 +24,17 @@ const Aside = () => {
         <h2 className="text-lg font-medium pl-1">Rick and Morty API</h2>
         <nav className="mt-4">
           <ul className="flex flex-col gap-5">
-            {navs.map((item, index) => {
+            {navs.map((item) => {
               return (
-                <li key={index}>
+                <li key={item.path}>
                   <Link
+                    onClick={() => setActive(item.path)}
                     className="relative py-2 pl-4 flex gap-2 text-sm"
                     to={item.path}
                   >
                     {item.icon}
                     {item.name}
-                    {location.pathname === item.path && (
+                    {active === item.path && (
                       <span className="absolute top-0 bottom-0 left-1 h-full w-1 bg-blue-500" />
                     )}
                   </Link>
