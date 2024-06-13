@@ -14,3 +14,7 @@ export const getCharacters = (params: ICharParams) => {
     },
   });
 };
+
+export const getCharacterById = (id: string) => {
+  return HTTP.get("/character/" + id);
+};

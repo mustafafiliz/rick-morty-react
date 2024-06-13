@@ -27,7 +27,7 @@ const Button = ({
           : "bg-red-500 border-red-500"
       } ${className}`}
     >
-      <span>{icon}</span> {name}
+      {icon && <span>{icon}</span>} {name}
     </button>
   );
 };
