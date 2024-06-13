@@ -61,11 +61,11 @@ const CharacterDetail = () => {
             </li>
             <li>
               <strong>Origin Name:</strong>{" "}
-              <span>{character?.origin.name}</span>
+              <span> {character?.origin.name}</span>
             </li>
             <li>
               <strong>Location Name:</strong>
-              <span>{character?.location.name}</span>
+              <span> {character?.location.name}</span>
             </li>
             <li>
               <strong>Created At:</strong>
